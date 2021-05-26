@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Emergency - 911 Calls, Montgomery County</title>
+{% endblock %}
+
+{% block body %}
+<div class="content">
+    <h1 style="text-align: center">Accidents in Montgomery</h1>
+    <table>
+        <tr>
+            <th>Town</th>
+            <th>Address</th>
+            <th>Title</th>
+            <th>Operator_pass_id</th>
+            <th>Call_begin</th>
+            <th>Call_end</th>
+            <th>Actions</th>
+        </tr>
+        {% for call_911, witness_accident, address in accidents %}
+            <tr>
+                <td>{{ address.town }}</td>
+                <td>{{ address.address }}</td>
+                <td>{{ witness_accident.title }}</td>
+                <td>{{ call_911.operator_pass_id }}</td>
+                <td>{{ call_911.call_begin }}</td>
+                <td>{{ call_911.call_end }}</td>
+
+                <td>
+                    <a href="/delete/{{call_911.operator_pass_id}}/{{call_911.call_begin}}">Delete</a>
+                    <br>
+                    <a href="/update/{{call_911.operator_pass_id}}/{{call_911.call_begin}}">Update</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+    <a href="/sign-in/">Sign-in</a>
+    <form action="/" method="POST">
+        <input type="text" name="town" id="town" value="<add Town>">
+        <input type="text" name="address" id="address" value="<add Address>">
+        <input type="text" name="title" id="title" value="<add Title>">
+        <input type="submit" value="Add">
+    </form>
+
+
+</div>
+{% endblock %}
