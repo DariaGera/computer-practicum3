@@ -15,3 +15,5 @@ CRUD (create, read, update, delete) виконані. Відповідають �
 У папці з проєктом ініціалізувати git-репозиторій
 Увійти в Heroku-акаунт (через heroku login).
 Додати зміни, закомітити та задеплоїти (git add .; git commit -am "some message"; git push heroku master)
+
+https://call911-for-operator.herokuapp.com/
